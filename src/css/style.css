@@ -172,6 +172,7 @@ span[class*="ti-"] {
 
 .author-cont ul li{
     width: 70%;
+    padding: 5px;
 }
 
 .author-cont ul li a{
@@ -246,6 +247,57 @@ button[type="submit"]:hover {
     color: #fff;
 }
 
+img {
+    max-width: 100%;
+    max-height: 100px;
+}
+
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin: 0 7px;
+    width: 94%;
+    padding:5px;
+    /* margin: 0 auto; */
+}
+
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px !important;
+    direction: ltr;
+    cursor: pointer;
+}
+
+.btn-input {
+    color: rgb(255, 255, 255);
+    background-color: rgb(29, 129, 209);
+    border-color: rgb(29, 129, 209);
+}
+
+.change, 
+.delete {
+    padding: 5px;
+}
+
+.change {
+    background: orange;
+    border-color: orange;
+}
+
+.delete {
+    background: red;
+    border-color: red;
+}
+
+.hide {
+    display: none;
+}
 
 /* footer */
 footer {
@@ -256,7 +308,7 @@ footer {
 
 /******************  RESPONSIVENESS *********************/
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 
 
     html,
@@ -303,5 +355,43 @@ footer {
         text-align: center;
     }
 
+    .author-cont {
+        order: 1;
+        padding: 0 15px;
+    }
+
+    form {
+        order: 0;
+    }
+
+    .author-cont p,
+    .author-cont ul li a,
+    {
+        text-align: center;
+    }
+
+
+}
+
+@media screen and (max-width: 400px) {
+
+    body,
+    html,
+    p,
+    a,
+    ul li,
+    .under p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .under h2 {
+        font-size: 1.5em;
+    }
+
+    .under p:last-child {
+        padding: 12px 0;
+        line-height: 1.5;
+    }
 
 }
