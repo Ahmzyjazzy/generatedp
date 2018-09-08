@@ -1,20 +1,21 @@
 
 html,
 body {
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: center;
-	height: 100vh;
-	width: 100vw;
-	font-size: 100%;
-	overflow: hidden;
-	color: #000;
-	background: linear-gradient(#303841, #6C567B, #3A4750);
-	color: #fff;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    font-size: 100%;
+    overflow: hidden;
+    color: #000;
+    background: linear-gradient(#303841, #6C567B, #3A4750);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
 }
 
 * {
-	box-sizing: border-box;	
+    box-sizing: border-box; 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -61,67 +62,65 @@ body {
 header, 
 main,
 footer {
-	min-width: 980px;
-	/*border: 2px solid #000;	*/
-	margin: 0 auto;
+    min-width: 980px;
+    /*border: 2px solid #000;   */
+    margin: 0 auto;
 }
 
 /* header */
 header {
-	flex: 0 1 auto;
+    flex: 0 1 auto;
 }
 
 
 /* main */
 main {
-	flex: 1 1 auto;
-	min-width: 980px;
-	background: #6C567B;
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: center;
-	border-radius: 10px;
-}
-
-.under, 
-.top {
-
+    flex: 1 1 auto;
+    min-width: 980px;
+    background: #6C567B;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    border-radius: 10px;
 }
 
 .under {
-	width: 100%;
-	max-height: 500px;
-	border-radius: 50%;
-	align-self: center;
-	padding: 6px 25px;
+    width: 100%;
+    max-height: 500px;
+    border-radius: 50%;
+    align-self: center;
+    padding: 6px 25px;
 }
 
 .under h2 {
-	font-weight: 100;
-	font-size: 2em;
+    font-weight: 100;
+    font-size: 2em;
 }
 
 .under p {
-	font-size: 1.5em;
-	text-align: center;
-	width: 50%;
-	padding-right: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    width: 50%;
+    padding-right: 20px;
 }
 
 .under p:last-child {
-	padding: 20px 0;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 
 .top {
-	width: 30%;
-	min-height: 100%;
-	background: #EA9215;
-	position: absolute;
-	top: 0;
-	right: 15%;
+    width: 30%;
+    min-height: 100%;
+    background: #EA9215;
+    position: absolute;
+    top: 0;
+    right: 15%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 /* list */
@@ -132,9 +131,9 @@ ul {
 }
 
 ul li {
-	font-size: 16px;
-	line-height: 1.8em;
-	width: 55%;
+    font-size: 16px;
+    line-height: 1.8em;
+    width: 55%;
 }
 
 ul li.ti:before {
@@ -150,30 +149,159 @@ ul li.ti:before {
 }
 
 span[class*="ti-"] {
-	font-weight: 700;
-}
-
-button[value="submit"] {
-	display: block;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
-	background-color: rgb(0,191,165);
     font-weight: 700;
 }
 
-button[type="submit"]:hover {
-	color: #fff;
+/* author content */
+
+.author-cont {
+    order: 0;
+    flex: 0 1 auto;
+    margin: 16px auto;
+}
+
+.author-cont p{
+    text-align: center;
+}
+
+.author-cont ul{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.author-cont ul li{
+    width: 70%;
+}
+
+.author-cont ul li a{
+    text-decoration: none;
+}
+
+.author-cont ul li a i{
+    padding-right: 2px;
+}
+
+.tint {
+    color: #303841;
+    font-weight: 700;
+}
+
+
+/* form */
+form {
+    max-width: 320px;
+    margin: 0 auto;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 13px;
+    order: 1;
+    flex: 0 1 auto;
+}
+
+fieldset {
+    background: rgb(255, 255, 255);
+    border: 3px outset rgb(119, 86, 178);
+    padding: 5% 7%;
+}
+
+legend {
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .form-control {
-	width: 100%;
+    width: 100%;
     padding: 5px 6px 4px 5px;
     line-height: 3em;
 }
 
+.form-control input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #000 !important;
+}
+
+#fullname {
+    transition: all 0.5s ease;
+    background: #fff url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png) no-repeat;
+    border: 1px solid rgb(200, 200, 200);
+    color: rgb(119, 119, 119);
+    margin: 0 0 10px;
+    padding: 15px 10px 15px 40px;
+    background-position: 5px 11px;
+}
+
+button[value="submit"] {
+    display: block;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+    background-color: rgb(0,191,165);
+    font-weight: 700;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    color: #fff;
+}
 
 
 /* footer */
 footer {
-	flex: 0 1 auto;
-	align-self: center;
+    flex: 0 1 auto;
+    align-self: center;
+}
+
+
+/******************  RESPONSIVENESS *********************/
+
+@media screen and (max-width: 600px) {
+
+
+    html,
+    body {
+        font-size: 12px;
+        margin: 0;
+        padding: 0 0;
+    }
+
+    header, 
+    main,
+    footer,
+    .under p,
+    ul li {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    main {
+        min-width: 100%;
+        height: auto;
+        flex-flow: row wrap;
+        overflow-y: scroll;
+    }
+
+    .under, 
+    .top {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+    }
+
+    .top {
+        padding: 25px 0;
+        margin-top: 12px;
+    }
+
+    h1,
+    footer p {
+        text-align: center;
+    }
+
+
 }
