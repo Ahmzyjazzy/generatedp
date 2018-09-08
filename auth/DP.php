@@ -1,52 +1,12 @@
 <?php
 
-/*
-
-int imagecopy ( resource dest_image, resource source_image, int dest_x, int dest_y, 
-int source_x, int source_y, int source_width, int source_height)
-
-int imagecopymerge ( resource dest_image, resource source_image, int dest_x, int dest_y, 
-int source_x, int source_y, int source_width, int source_height, int merge_percentage)
-
-1. The destination image you're copying to
-
-2. The source image you're copying from
-
-3. The X co-ordinate you want to copy to
-
-4. The Y co-ordinate you want to copy to
-
-5. The X co-ordinate you want to copy from
-
-6. The y co-ordinate you want to copy from
-
-7. The width in pixels of the source image you want to copy
-
-8. The height in pixels of the source image you want to copy
-
-Parameters three and four allow you to position the source image where you want it on the destination image, 
-and parameters five, six, seven, and eight allow you to define the rectangular area of the source image that 
-you want to copy. Most of the time you will want to leave parameters five and six at 0 
-(copy from the top-left hand corner of the image), and parameters seven and eight at the width of the source image
- (the bottom-right corner of it) so that it copies the entire source image.
-
-The way these functions differ is in the last parameter: imagecopy() always overwrites all the pixels in the 
-destination with those of the source, whereas imagecopymerge() merges the destination pixels with the source 
-pixels by the amount specified in the extra parameter: 0 means "keep the source picture fully", 100 means 
-"overwrite with the source picture fully", and 50 means "mix the source and destination pixel colours equally". 
-The imagecopy() function is therefore equivalent to calling imagecopymerge() and passing in 100 as the last parameter.
-
-*/
-
 class DISPLAY_PICTURE {
  
-   protected $db;
+   private static $image_name;
 
-   private static $sy;
-
-   function __construct()
+   function __construct($name)
     {
-        
+        $this->$image_name = $name;
     }
  
    function __destruct()
@@ -75,7 +35,7 @@ class DISPLAY_PICTURE {
 
 		$final_image = $this->addtext($txt, $frame, $av_img, 250, 140);
 
-		$this->saveFile($final_image, $destination_path, "a.jpg");
+		$this->saveFile($final_image, $destination_path, $this->$image_name);
 
 	}
 
@@ -142,43 +102,46 @@ class DISPLAY_PICTURE {
 	private function addtext($txt, $frame, $av_img, $merge_right, $merge_bottom)
 	{
 
-		/* 
+		// Set the enviroment variable for GD
+		putenv('GDFONTPATH=' . realpath('.'));
 
-		#imagettftext-params below
-		( resource $image , float $size , float $angle , int $x , int $y , int $color , string $fontfile , string $text )
+		// Set the content-type
+		// header('Content-type: image/jpeg');
 
-		image : An image resource, returned by one of the image creation functions, such as imagecreatetruecolor().
+		// Create Image From Existing File
+		$jpg_image = $frame;
 
-		size: The font size in points.
+		// Allocate A Color For The Text
+		$white = imagecolorallocate($jpg_image, 87, 15, 140);
 
-		angle : The angle in degrees, with 0 degrees being left-to-right reading text. Higher values represent a counter-clockwise rotation. For example, a value of 90 would result in bottom-to-top reading text.
+		// Set Path to Font File
+		$font_path = '../src/fonts/kenyan_coffee/kenyan coffee rg.ttf';
 
-		x :The coordinates given by x and y will define the basepoint of the first character (roughly the lower-left corner of the character). This is different from the imagestring(), where x and y define the upper-left corner of the first character. For example, "top left" is 0, 0.
+		// Set Text to Be Printed On Image
+		$username  = $txt;
+		$names = explode(" ", $username);
+		$ycounter = 185;
+		$indexCounter = 0;
 
-		y : The y-ordinate. This sets the position of the fonts baseline, not the very bottom of the character.
+		foreach ($names as $text) {
+		    // Print Text On Image
+			imagettftext($jpg_image, 15, 0, 15, $ycounter, $white, $font_path, $text);
+			$ycounter += 23;
+			$indexCounter += 1;
+			if($names[$indexCounter] == $names[3]){
+				break;
+			}
+		}
 
-		color : The color index. Using the negative of a color index has the effect of turning off antialiasing. See imagecolorallocate().
+		$text = $txt;		
 
-		fontfile : The path to the TrueType font you wish to use.
+		// Send Image to Browser
+		// imagejpeg($jpg_image);
 
-		*/
+		// Using imagepng() results in clearer text compared with imagejpeg()
+		// imagepng($frame);
 
-		// First we create our stamp image manually from GD
-		$stamp = imagecreatetruecolor(100, 70);
-		// imagefilledrectangle($stamp, 0, 0, 99, 69, 0x0000FF);
-		// imagefilledrectangle($stamp, 9, 9, 90, 60, 0xFFFFFF);
-		imagestring($stamp, 5, 20, 20, $txt, 0x0000FF);
-
-		// Set the margins for the stamp and get the height/width of the stamp image
-		$marge_right = $merge_right;
-		$marge_bottom = $merge_bottom;
-		$sx = imagesx($stamp);
-		$sy = imagesy($stamp);
-
-		// Merge the stamp onto our photo with an opacity of 50%
-		imagecopymerge($frame, $stamp, imagesx($frame) - $sx - $merge_right, imagesy($frame) - $sy - $merge_bottom, 0, 0, imagesx($stamp), imagesy($stamp), 100);
-
-		return $frame;
+		return $jpg_image;
 	}
 
 	private function saveFile($final_image, $destination_path, $new_file_name){
@@ -187,38 +150,7 @@ class DISPLAY_PICTURE {
 		imagedestroy($final_image);
 	}
 
-
-
 }
-
-
-$txt = "Ahmed Olanrewaju";
-$uploadImage = "1536424536034.jpg";
-
-$uploadDir = "../uploads/";
-$moveToDir = "../uploads/thumbnail/";
-
-$final_destination = "../uploads/dp/";
-$frameImg = "../src/img/frame.jpeg";
-
-// image dimension variable
-$img_width = 170;
-$img_height = 126;
-
-// image position
-$margin_right = 143;
-$margin_bottom = 148;
-
-
-//call 
-$dp = new DISPLAY_PICTURE();
-
-//create thumnail
-$dp->createThumbnail($uploadImage, $img_width, $img_height, $uploadDir, $moveToDir);
-
-//merge picture
-$dp->mergeImage($txt, $frameImg, $moveToDir.$uploadImage, $margin_right, $margin_bottom, $final_destination);
-
 
 ?>
 
