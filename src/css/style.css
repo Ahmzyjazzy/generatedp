@@ -157,7 +157,7 @@ span[class*="ti-"] {
 .author-cont {
     order: 0;
     flex: 0 1 auto;
-    margin: 16px auto;
+    margin: 5px auto;
 }
 
 .author-cont p{
@@ -248,8 +248,8 @@ button[type="submit"]:hover {
 }
 
 img {
-    max-width: 100%;
-    max-height: 100px;
+    width: 100%;
+    max-height: 120px;
 }
 
 .fileinput-button {
@@ -297,6 +297,27 @@ img {
 
 .hide {
     display: none;
+}
+
+/* display picture section */
+
+.dp-container > div {
+    max-width: 400px;
+}
+
+img#dp_result {
+    width: 100%;
+    max-height: 400px;
+}
+
+.arrow-back {
+    position: absolute;
+    top: 33px;
+    left: 8%;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
 }
 
 /* footer */

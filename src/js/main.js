@@ -6,23 +6,36 @@ const preview = document.querySelector("img");
 const changebtn = document.querySelector(".change");
 const deletebtn = document.querySelector(".delete");
 const fileInpbtn = document.querySelector(".fileinput-button");
+const main = document.querySelector("main")
+const mainContent = main.innerHTML;
 
 /* create dp btn */
 button.addEventListener("click", function(){
 
 	let formData = new FormData();
 	let file = document.querySelector('input[type=file]').files[0];
+	let fullname = document.querySelector('#fullname').value;
 	let isValid = validateInp(file);
+	console.log(fullname);
 
-	if(!isValid) return false;
+	if(!isValid || fullname.length == 0) return false;
 
-	formData.append('username', 'abc123');
+	formData.append('fullname', fullname);
 	formData.append("avatar", file);
 	formData.append("timestamp", new Date().getTime());
 
-	console.log(formData);
+	processInput(formData, data => {
+        let res = JSON.parse(data);
+        if(res.status == "ok"){
+            //logic for display
+            let temp = res.msg;
+            navigateTo("yourdp", temp);
+            return true;
+        }
+        alert(res.msg);
+        return false;
+    });
 
-	processInput(formData, data => console.log(JSON.stringify(data)));
 });
 
 /* file input */
@@ -78,7 +91,7 @@ function processInput(formData,cb){
 	       cb(xhr.responseText);
 	    }
 	}
-	xhr.open("POST", "auth/upload.php");
+	xhr.open("POST", "auth/process.php");
 	xhr.send(formData);
 }
 
@@ -95,6 +108,18 @@ function validateInp(file){
 	}
 
 	return true;
+}
+
+function navigateTo(view, temp = ""){
+    switch(view){
+        case "yourdp":
+            main.innerHTML = temp;
+            main.style.background = "none";
+        break;
+        default:
+            main.style.background = "rgb(108, 86, 123)";
+            main.innerHTML = mainContent;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
