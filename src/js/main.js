@@ -16,7 +16,6 @@ button.addEventListener("click", function(){
 	let file = document.querySelector('input[type=file]').files[0];
 	let fullname = document.querySelector('#fullname').value;
 	let isValid = validateInp(file);
-	console.log(fullname);
 
 	if(!isValid || fullname.length == 0) return false;
 
@@ -97,7 +96,6 @@ function processInput(formData,cb){
 
 function validateInp(file){
 
-	console.log('check valid input....');
 	let filetype = file.type;
 	let match = ["image/jpeg", "image/png", "imgae/jpg"];
 
