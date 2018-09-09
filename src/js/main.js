@@ -122,7 +122,7 @@ function navigateTo(view, temp = ""){
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	const oohost = document.querySelector("body > div");
-	oohst.remove();
+	oohost.remove();
 	console.log("DOM fully loaded and parsed");
 });	
 
