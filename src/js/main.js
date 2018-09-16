@@ -19,13 +19,14 @@ $(function() {
 		var imageData = $('.image-editor').cropit('export');
 		$('.hidden-image-data').val(imageData);
 
+		$(".create-dp").attr("disabled","disabled").html('...processing');
+
 		appendFileAndSubmit(username, imageData, function(res){
 	        if(res.status == "ok"){
 	            let temp = res.msg;
 	            navigateTo("yourdp", temp);
 	            return true;
 	        }
-	        alert(res.msg);
 	        return false;
 		});
 	});
@@ -132,5 +133,10 @@ $(function() {
 	            main.innerHTML = mainContent;
 	    }
 	}
+
+	//remove host ads
+	const oohost = document.querySelector("body > div");
+	oohost.remove();
+	console.log("DOM fully loaded and parsed");
 
 });

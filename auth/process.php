@@ -59,7 +59,7 @@ if(isset($_POST["avatar"])) {
               <a href="?" class="arrow-back "><i class="ti-arrow-left"></i></a>
               <div>
                   <img id="dp_result" src="uploads/2018/dp/'.$newfilename.'">                
-                  <a class="button" class="kb-button download-dp" href="uploads/2018/dp/'.$newfilename.'" download="'.$name.'"_kwarabuild'.$year.'">Download Image</a>      
+                  <a class="kb-button download-dp btn" href="uploads/2018/dp/'.$newfilename.'" download="'.$name.'"_kwarabuild'.$year.'">Download Image</a>      
               </div>
           <sectoin>';
 

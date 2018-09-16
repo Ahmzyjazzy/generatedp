@@ -469,6 +469,10 @@ button[type="submit"] {
         line-height: 1.5;
     }
 
+    h1 {
+        font-size: 18px;
+    }
+
     .under h2 {
         font-size: 1.5em;
     }
@@ -476,6 +480,15 @@ button[type="submit"] {
     .under p:last-child {
         padding: 12px 0;
         line-height: 1.5;
+    }
+
+    .arrow-back {
+        top: 5px;
+        left: 3%;
+    }
+
+    .download-dp {
+        padding: 6px 8px;
     }
 
 }
