@@ -45,7 +45,7 @@ class EVENT_DP {
 		$sx = imagesx($avatar);
 		$sy = imagesy($avatar);
 
-		// Merge the stamp onto our photo with an opacity of 50%
+		// Merge the stamp onto our photo with an opacity of 100%
 		imagecopymerge($frame, $avatar, imagesx($frame) - $sx - $merge_right, imagesy($frame) - $sy - $merge_bottom, 0, 0, imagesx($avatar), imagesy($avatar), 100);
 
 		$final_image = $this->addtext($txt, $frame, $av_img, 250, 140);
@@ -96,7 +96,7 @@ class EVENT_DP {
 	    }
 
 	    $dst_img = ImageCreateTrueColor($thumb_w,$thumb_h);
-	    imagecopyresampled($dst_img,$src_img,0,0,0,0,$thumb_w,$thumb_h,$old_x,$old_y); 
+		imagecopyresampled($dst_img,$src_img,0,0,0,0,$thumb_w,$thumb_h,$old_x,$old_y); 
 
 	    // New save location
 	    $new_thumb_loc = $moveToDir . $image_name;

@@ -41,11 +41,11 @@
 			<div class="author-cont">
 				<p>This webapp was created by a <span class="tint">Kwarabuild</span> team member, <span class="tint">Ahmzyjazzy</span> make sure you checkout his social 
 				page below for his other works: <p>		
-				<ul>
+				<!-- <ul>
 					<li><a href="https://twitter.com/ahmzyjazzy"><i class="ti-twitter"></i>Olanrewaju Ahmed on Twitter</a>
 					<li><a href="https://github.com/ahmzyjazzy"><i class="ti-github"></i>Olanrewaju Ahmed on Github</a>
 					<li><a href="https://www.facebook.com/ahmzyjazzy"><i class="ti-facebook"></i>Olanrewaju Ahmed on Facebook</a>
-				</ul>	
+				</ul>	 -->
 			</div>
 
 			<form enctype="multipart/form-data" action="" method="POST" onsubmit="event.preventDefault();">
@@ -53,29 +53,35 @@
 					<legend class="ti-camera"></legend>
 					<div class="form-control">
 	                    <input placeholder="name" required="" id="fullname" name="fullname" type="text">
-	                </div>
-
-	                <span class="btn btn-input fileinput-button">
-	                    <i class="ti-camera"></i>
-	                    <span>Choose an image...</span>
-	                    <input id="file" name="file" type="file" required="">
-	                </span>
-
-	                <div class="form-control">
-	                	<button type="reset" class="btn btn-input change hide">
-	                    <i class="ti-image"></i>
-	                    <span>Change Image</span>
-		                </button>
-		                <button type="button" class="btn btn-input delete hide">
-		                    <i class="ti-cancel"></i>
-		                    <span>Remove</span>
-		                </button>
-	                </div>
-
-	                <img src="src/img/noimage.png" class="preview"> 
+					</div>
+					<div class="image-editor">
+						<!-- <input type="file" class="cropit-image-input"> -->
+						<span class="btn btn-input fileinput-button">
+		                    <i class="ti-camera"></i>
+		                    <span>Choose an image...</span>
+							<input id="file" name="file" type="file" class="cropit-image-input" required="">
+							<input type="hidden" name="image-data" class="hidden-image-data" />
+		                </span>
+		                <div class="form-control">
+		                	<button type="reset" class="btn btn-input change hide">
+		                    <i class="ti-image"></i>
+		                    <span>Change Image</span>
+			                </button>
+			                <button type="button" class="btn btn-input delete hide">
+			                    <i class="ti-cancel"></i>
+			                    <span>Remove</span>
+			                </button>
+		                </div> 
+						<div class="cropit-preview"></div>
+						<div class="image-size-label">
+						  Resize image
+						</div>
+						<input type="range" class="cropit-image-zoom-input">
+						<input type="hidden" name="image-data" class="hidden-image-data" />
+					</div>                
 
 	                <div class="button">                
-	                	<button value="submit" class="kb-button create-dp">Create your own DP</button>        
+	                	<button value="submit" type="submit" class="kb-button create-dp">Create your own DP</button>        
 	            	</div>
 				</fieldset>
             </form>
@@ -88,9 +94,9 @@
 		<p> &copy; Kwarabuild 2018. All Rights Reserved. Follow on Linkedln 
 			<a href="https://ng.linkedin.com/in/ahmzyjazzy" class="social">@Ahmzyjazzy</p>
 	</footer>
-
-	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-	<script src="src/js/main.js" type="text/babel"></script>
-
+	
+	<script src="src/js/jquery.min.js"></script>
+    <script src="src/js/jquery.cropit.js"></script>
+	<script src="src/js/main.js"></script>
 </body>
 </html>

@@ -1,128 +1,136 @@
+$(function() {
 
-/* global variables */
-const button = document.querySelector(".create-dp");
-const fileInput = document.querySelector("#file");
-const preview = document.querySelector("img");
-const changebtn = document.querySelector(".change");
-const deletebtn = document.querySelector(".delete");
-const fileInpbtn = document.querySelector(".fileinput-button");
-const main = document.querySelector("main")
-const mainContent = main.innerHTML;
+	/* global variables */
+	const button = $(".create-dp");
+	const fileInput = $("input[type=file]");
+	const preview = $("img");
+	const changebtn = $(".change");
+	const deletebtn = $(".delete");
+	const fileInpbtn = $(".fileinput-button");
+	const main = $("main")
+	const mainContent = main.innerHTML;
 
-/* create dp btn */
-button.addEventListener("click", function(){
+  	$('.image-editor').cropit();
 
-	let formData = new FormData();
-	let file = document.querySelector('input[type=file]').files[0];
-	let fullname = document.querySelector('#fullname').value;
-	let isValid = validateInp(file);
+	$('form').submit(function(e) {
+		e.preventDefault();
+		var username = $("#fullname").val();
+		// Move cropped image data to hidden input
+		var imageData = $('.image-editor').cropit('export');
+		$('.hidden-image-data').val(imageData);
 
-	if(!isValid || fullname.length == 0) return false;
+		appendFileAndSubmit(username, imageData, function(res){
+	        if(res.status == "ok"){
+	            let temp = res.msg;
+	            navigateTo("yourdp", temp);
+	            return true;
+	        }
+	        alert(res.msg);
+	        return false;
+		});
+	});
 
-	formData.append('fullname', fullname);
-	formData.append("avatar", file);
-	formData.append("timestamp", new Date().getTime());
+	/* file input */
+	fileInput.on("change", function(e) {
+		fileInpbtn.css({display:"none"});
+		changebtn.css({display:"inline-block"});
+		deletebtn.css({display:"inline-block"});
+	})
 
-	processInput(formData, data => {
-        let res = JSON.parse(data);
-        if(res.status == "ok"){
-            //logic for display
-            let temp = res.msg;
-            navigateTo("yourdp", temp);
-            return true;
-        }
-        alert(res.msg);
-        return false;
-    });
+	/* change image btn */
+	changebtn.on("click", function(){
+		fileInput.click();
+	})
 
-});
+	/* remove image btn */
+	deletebtn.on("click", function(){
+		let file = document.querySelector('input[type=file]').files[0];
+		file.value = null;
 
-/* file input */
-fileInput.addEventListener("change", function(e){
+		fileInpbtn.css({display:"inline-block"});
+		changebtn.css({display:"none"});
+		deletebtn.css({display:"none"});
 
-	let file = document.querySelector('input[type=file]').files[0];
-	let isValid = validateInp(file);
+		$(".cropit-preview-image").attr("src","");
 
-	if(!isValid) return false;
+	})
 
-	let reader  = new FileReader();
 
-	reader.onloadend = function () {
-		preview.src = reader.result;
+	function b64toBlob(b64Data, contentType, sliceSize) {
+		contentType = contentType || '';
+		sliceSize = sliceSize || 512;
+
+		var byteCharacters = atob(b64Data);
+		var byteArrays = [];
+
+		for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+			var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+			var byteNumbers = new Array(slice.length);
+			for (var i = 0; i < slice.length; i++) {
+				byteNumbers[i] = slice.charCodeAt(i);
+			}
+
+			var byteArray = new Uint8Array(byteNumbers);
+			byteArrays.push(byteArray);
+		}
+
+
+		var blob = new Blob(byteArrays, {type: contentType});
+		return blob;
 	}
 
-	if (file) {
-		reader.readAsDataURL(file);
-	} else {
-	    preview.src = "";
+	function appendFileAndSubmit(username,ImageURL, cb){
+		// Split the base64 string in data and contentType
+		var block = ImageURL.split(";");
+
+		// Get the content type
+		var contentType = block[0].split(":")[1];
+
+		// get the real base64 content of the file
+		var realData = block[1].split(",")[1];
+
+		// Convert to blob
+		var blob = b64toBlob(realData, contentType);
+
+		// Create a FormData and append the file
+		var fd = new FormData();
+		fd.append("avatar", ImageURL);
+		fd.append("fullname", username);
+		fd.append("timestamp", new Date().getTime());
+
+		// Submit Form and upload file
+		$.ajax({
+			url:"auth/process.php",
+			data: fd,// the formData function is available in almost all new browsers.
+			type:"POST",
+			contentType:false,
+			processData:false,
+			cache:false,
+			dataType:"json", // Change this according to your response from the server.
+			error:function(err){
+				console.error(err);
+			},
+			success:function(data){
+				(cb && cb !== undefined) && cb(data);	
+			},
+			complete:function(){
+				console.log("Request finished.");
+			}
+		});
+		
 	}
 
-	fileInpbtn.style.display = "none";
-	changebtn.style.display = "inline-block";
-	deletebtn.style.display = "inline-block";
-
-});
-
-/* change image btn */
-changebtn.addEventListener("click", function(){
-	fileInput.click();
-})
-
-/* remove image btn */
-deletebtn.addEventListener("click", function(){
-	let file = document.querySelector('input[type=file]').files[0];
-	file.value = null;
-	fileInpbtn.style.display = "inline-block";
-	changebtn.style.display = "none";
-	deletebtn.style.display = "none";
-	preview.src = "src/img/noimage.png"
-})
-
-function processInput(formData,cb){
-	let xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-	    if (xhr.readyState == XMLHttpRequest.DONE) {
-	        cb(xhr.responseText);
+	function navigateTo(view, temp = ""){
+	    switch(view){
+	        case "yourdp":
+	            main.html(temp);
+	            main.css({background :"none"});
+	        break;
+	        default:
+	            main.style.background = "rgb(108, 86, 123)";
+	            main.innerHTML = mainContent;
 	    }
 	}
-	xhr.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	       cb(xhr.responseText);
-	    }
-	}
-	xhr.open("POST", "auth/process.php");
-	xhr.send(formData);
-}
 
-function validateInp(file){
-
-	let filetype = file.type;
-	let match = ["image/jpeg", "image/png", "imgae/jpg"];
-
-	if(!match.includes(filetype)) {
-		alert("Please select a valid image");
-		this.files[0].value = null;
-		return false;
-	}
-
-	return true;
-}
-
-function navigateTo(view, temp = ""){
-    switch(view){
-        case "yourdp":
-            main.innerHTML = temp;
-            main.style.background = "none";
-        break;
-        default:
-            main.style.background = "rgb(108, 86, 123)";
-            main.innerHTML = mainContent;
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function(event) {
-	const oohost = document.querySelector("body > div");
-	oohost.remove();
-	console.log("DOM fully loaded and parsed");
-});	
-
+});
