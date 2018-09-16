@@ -225,8 +225,8 @@ legend {
     border: 1px solid rgb(200, 200, 200);
     color: rgb(119, 119, 119);
     margin: 0 0 10px;
-    padding: 15px 10px 15px 40px;
-    background-position: 5px 11px;
+    padding: 10px 10px 12px 40px;
+    background-position: 5px 9px;
 }
 
 button[value="submit"] {
@@ -450,6 +450,10 @@ button[type="submit"] {
         text-align: center;
     }
 
+    .arrow-back {
+        top: 16px;
+        left: 3%;
+    }
 
 }
 
