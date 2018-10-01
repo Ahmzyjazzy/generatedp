@@ -20,8 +20,8 @@ $margin_bottom = 148;
 
 if(isset($_POST["avatar"])) {
 
-    $time = $_POST['timestamp'];
-    $txt = $_POST['fullname'];
+    $time = checkInput($_POST['timestamp']);
+    $txt = checkInput($_POST['fullname']);
 
     $validextensions = array("jpeg", "jpg", "png");
     $temp1 = explode(";", $_POST["avatar"]);
@@ -91,6 +91,12 @@ if(isset($_POST["avatar"])) {
   echo json_encode($response);
 }
 
+ function checkInput($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 
 
 ?>
