@@ -1,16 +1,16 @@
-#Event DP (Case study kwarabuild tech conference)
+**Event DP (Case study kwarabuild tech conference)**
 This is a volunteer project to create social media awareness for the large tech conference in North Central
 Ilorin, Kwara State. Attendees input their name and upload an image to generate a customize KWARABUILD
 event dp.
 
-#Tools Used
+**Tools Used**
 jquery.min.js - for dom event and manipulation
 jquery.cropit.js - client side cropping of user uploaded image 
 PHP - for server side image processing and merging
 Kenyan_coffee - font used for writing user name on image
 themify-icon - to display icons
 
-#Folder structure and files
+**Folder structure and files**
 -auth/							
 	EVENT_DP.php 			:class for image manipulation
 	process.php 			:process image input before manipulation
@@ -37,7 +37,7 @@ index.html 					:main html file where magic happens
 serviceworker.js            :js file to serve file requests and make app work locally
 
 
-#imagettftext
+**imagettftext**
 
 imagettftext( resource $image , float $size , float $angle , int $x , int $y , int $color , string $fontfile , string $text )
 
@@ -57,7 +57,7 @@ fontfile : The path to the TrueType font you wish to use.
 
 ------------------------------------------------------------------------
 
-#imagecopy vs imagecopymerge
+**imagecopy vs imagecopymerge**
 
 int imagecopy ( resource dest_image, resource source_image, int dest_x, int dest_y, 
 int source_x, int source_y, int source_width, int source_height)
