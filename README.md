@@ -1,3 +1,40 @@
+#Event DP (Case study kwarabuild tech conference)
+This is a volunteer project to create social media awareness for the large tech conference in North Central
+Ilorin, Kwara State. Attendees input their name and upload an image to generate a customize KWARABUILD
+event dp.
+
+#Tools Used
+jquery.min.js - for dom event and manipulation
+jquery.cropit.js - client side cropping of user uploaded image 
+PHP - for server side image processing and merging
+Kenyan_coffee - font used for writing user name on image
+themify-icon - to display icons
+
+#Folder structure and files
+-auth/							
+	EVENT_DP.php 			:class for image manipulation
+	process.php 			:process image input before manipulation
+-src/							
+	css/
+		style.css 			:css to customize the page, hint: code from scratch
+	fonts/
+		kenyan_coffee/		:folder contains font files
+		themify-icon.css 	:font css
+		themify-*			:others themify css file
+	img/
+		frame.jpg 			:image frame where user image will be place/merge
+		noimage.png 		:a fallback default image
+	js/
+		jquery.cropit.js 	:simple jquery image cropping plugin
+		jquery.min.js 		:jquery official library
+		main.js 			:custom js where the magic happens
+-uploads/
+	2018/
+		dp/					:folder contains all dp generated
+		thumbnail/			:folder contains all crop image thumbnails
+.htacess					:custom server file for file dir access
+index.html 					:main html file where magic happens
+serviceworker.js            :js file to serve file requests and make app work locally
 
 
 #imagettftext
@@ -6,7 +43,7 @@ imagettftext( resource $image , float $size , float $angle , int $x , int $y , i
 
 image : An image resource, returned by one of the image creation functions, such as imagecreatetruecolor().
 
-size: The font size in points.
+size : The font size in points.
 
 angle : The angle in degrees, with 0 degrees being left-to-right reading text. Higher values represent a counter-clockwise rotation. For example, a value of 90 would result in bottom-to-top reading text.
 
