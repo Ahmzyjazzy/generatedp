@@ -14,6 +14,7 @@ event dp.
 
 **Folder structure and files**
 
+```
 - auth/							
 	EVENT_DP.php 			:class for image manipulation
 	process.php 			:process image input before manipulation
@@ -39,6 +40,7 @@ event dp.
 - index.html 					:main html file where magic happens
 - serviceworker.js            :js file to serve file requests and make app work locally
 
+```
 
 ------------------------------------------------------------------------
 
