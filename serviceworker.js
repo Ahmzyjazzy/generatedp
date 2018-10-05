@@ -1,4 +1,4 @@
-//service worker
+//service worker --TODO: Not yet implemented
 var staticCacheName = 'eventDP-static-v1',
     eventDPs = 'eventDP-list',
     images = 'eventDP-image',

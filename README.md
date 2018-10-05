@@ -6,18 +6,18 @@ event dp.
 
 **Tools Used**
 
-jquery.min.js - for dom event and manipulation
-jquery.cropit.js - client side cropping of user uploaded image 
-PHP - for server side image processing and merging
-Kenyan_coffee - font used for writing user name on image
-themify-icon - to display icons
+- jquery.min.js - for dom event and manipulation
+- jquery.cropit.js - client side cropping of user uploaded image 
+- PHP - for server side image processing and merging
+- Kenyan_coffee - font used for writing user name on image
+- themify-icon - to display icons
 
 **Folder structure and files**
 
--auth/							
+- auth/							
 	EVENT_DP.php 			:class for image manipulation
 	process.php 			:process image input before manipulation
--src/							
+- src/							
 	css/
 		style.css 			:css to customize the page, hint: code from scratch
 	fonts/
@@ -31,13 +31,13 @@ themify-icon - to display icons
 		jquery.cropit.js 	:simple jquery image cropping plugin
 		jquery.min.js 		:jquery official library
 		main.js 			:custom js where the magic happens
--uploads/
+- uploads/
 	2018/
 		dp/					:folder contains all dp generated
 		thumbnail/			:folder contains all crop image thumbnails
-.htacess					:custom server file for file dir access
-index.html 					:main html file where magic happens
-serviceworker.js            :js file to serve file requests and make app work locally
+- .htacess					:custom server file for file dir access
+- index.html 					:main html file where magic happens
+- serviceworker.js            :js file to serve file requests and make app work locally
 
 
 ------------------------------------------------------------------------
