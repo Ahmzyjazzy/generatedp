@@ -1,4 +1,4 @@
-#Event DP (Case study kwarabuild tech conference)
+##Event DP (Case study kwarabuild tech conference)
 This is a volunteer project to create social media awareness for the large tech conference in North Central
 Ilorin, Kwara State. Attendees input their name and upload an image to generate a customize KWARABUILD
 event dp.
