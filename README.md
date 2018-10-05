@@ -16,14 +16,6 @@ You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webh
 
 **Folder structure and files**
 
-**How to run locally**
-
--Open your command prompt and clone the repository by running 
-``` git clone https://github.com/Ahmzyjazzy/generatedp.git ```
--Copy the folder to your WAMP www root or XAMP htdots
--Then run in a browser
-
-
 ```
 - auth/							
 	EVENT_DP.php 			:class for image manipulation
@@ -51,6 +43,14 @@ You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webh
 - serviceworker.js            :js file to serve file requests and make app work locally
 
 ```
+
+**How to run locally**
+
+-Open your command prompt and clone the repository by running 
+``` git clone https://github.com/Ahmzyjazzy/generatedp.git ```
+-Copy the folder to your WAMP www root or XAMP htdots
+-Then run in a browser
+
 
 ------------------------------------------------------------------------
 
