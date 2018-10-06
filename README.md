@@ -39,8 +39,8 @@ You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webh
 		dp/					:folder contains all dp generated
 		thumbnail/			:folder contains all crop image thumbnails
 - .htacess					:custom server file for file dir access
-- index.html 					:main html file where magic happens
-- serviceworker.js            :js file to serve file requests and make app work locally
+- index.html 				:main html file where magic happens
+- serviceworker.js          :js file to serve file requests and make app work locally
 
 ```
 
