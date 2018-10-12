@@ -6,6 +6,8 @@ event dp.
 
 You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webhostapp.com/).
 
+![eventDp homepage](https://raw.githubusercontent.com/Ahmzyjazzy/generatedp/master/screenshot.png)
+
 # Tools Used
 
 - jquery.min.js - for dom event and manipulation
