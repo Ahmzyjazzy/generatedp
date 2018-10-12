@@ -50,11 +50,13 @@ You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webh
 
 ``` git clone https://github.com/Ahmzyjazzy/generatedp.git ```
 
-- Copy the folder to your WAMP www root or XAMP htdots
+- Copy the folder to your **WAMP** www root or **XAMP** htdots
 - Then run in a browser
 
 
 ------------------------------------------------------------------------
+
+# PHP Classes Used
 
 ## imagettftext
 
@@ -98,14 +100,14 @@ int source_x, int source_y, int source_width, int source_height, int merge_perce
 
 8. The height in pixels of the source image you want to copy
 
-Parameters three and four allow you to position the source image where you want it on the destination image, 
-and parameters five, six, seven, and eight allow you to define the rectangular area of the source image that 
+Parameters **three** and **four** allow you to position the source image where you want it on the destination image, 
+and parameters **five, six, seven, and eight** allow you to define the rectangular area of the source image that 
 you want to copy. Most of the time you will want to leave parameters five and six at 0 
 (copy from the top-left hand corner of the image), and parameters seven and eight at the width of the source image
  (the bottom-right corner of it) so that it copies the entire source image.
 
-The way these functions differ is in the last parameter: imagecopy() always overwrites all the pixels in the 
-destination with those of the source, whereas imagecopymerge() merges the destination pixels with the source 
+The way these functions differ is in the last parameter: **imagecopy()** always overwrites all the pixels in the 
+destination with those of the source, whereas **imagecopymerge()** merges the destination pixels with the source 
 pixels by the amount specified in the extra parameter: 0 means "keep the source picture fully", 100 means 
 "overwrite with the source picture fully", and 50 means "mix the source and destination pixel colours equally". 
-The imagecopy() function is therefore equivalent to calling imagecopymerge() and passing in 100 as the last parameter.
+The **imagecopy()** function is therefore equivalent to calling **imagecopymerge()** and passing in 100 as the last parameter.
