@@ -56,7 +56,7 @@ You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webh
 
 ------------------------------------------------------------------------
 
-**imagettftext**
+## imagettftext
 
 imagettftext( resource $image , float $size , float $angle , int $x , int $y , int $color , string $fontfile , string $text )
 
@@ -74,7 +74,7 @@ color : The color index. Using the negative of a color index has the effect of t
 
 fontfile : The path to the TrueType font you wish to use.
 
-**imagecopy vs imagecopymerge**
+## imagecopy vs imagecopymerge
 
 int imagecopy ( resource dest_image, resource source_image, int dest_x, int dest_y, 
 int source_x, int source_y, int source_width, int source_height)
