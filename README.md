@@ -1,12 +1,12 @@
 # Event DP 
-###### (Case study kwarabuild tech conference)
+#### (Case study kwarabuild tech conference)
 This is a volunteer project to create social media awareness for the large tech conference in North Central
 Ilorin, Kwara State. Attendees input their name and upload an image to generate a customize KWARABUILD
 event dp.
 
 You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webhostapp.com/).
 
-**Tools Used**
+# Tools Used
 
 - jquery.min.js - for dom event and manipulation
 - jquery.cropit.js - client side cropping of user uploaded image 
@@ -14,7 +14,7 @@ You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webh
 - Kenyan_coffee - font used for writing user name on image
 - themify-icon - to display icons
 
-**Folder structure and files**
+# Folder structure and files
 
 ```
 - auth/							
@@ -44,10 +44,12 @@ You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webh
 
 ```
 
-**How to run locally**
+# How to run locally
 
 - Open your command prompt and clone the repository by running 
+
 ``` git clone https://github.com/Ahmzyjazzy/generatedp.git ```
+
 - Copy the folder to your WAMP www root or XAMP htdots
 - Then run in a browser
 
