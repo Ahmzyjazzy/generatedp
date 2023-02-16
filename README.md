@@ -4,8 +4,6 @@ This is a volunteer project to create social media awareness for the large tech 
 Ilorin, Kwara State. Attendees input their name and upload an image to generate a customize KWARABUILD
 event dp.
 
-You can find an online demo at [KwarabuildDP](https://olanrewajuahmed095.000webhostapp.com/).
-
 ![eventDp homepage](https://github.com/Ahmzyjazzy/generatedp/blob/master/screenshot.PNG)
 
 # Tools Used
